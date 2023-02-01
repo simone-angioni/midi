@@ -11,8 +11,8 @@ import sys
 
 import pandas as pd
 
-sys.path.append(
-    r'C:\Users\andri\Desktop\Tesi\Midi_Classification_and_Generation\libraries\tegridy-tools\tegridy-tools')
+# sys.path.append(
+#     r'C:\Users\andri\Desktop\Tesi\Midi_Classification_and_Generation\libraries\tegridy-tools\tegridy-tools')
 
 import TMIDIX
 

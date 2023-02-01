@@ -3,22 +3,22 @@ from random import random
 import pandas as pd
 from tensorflow import keras
 
-from Midi_Processing.labels_manager import load_nes_label
+from labels_manager import load_nes_label
 
 print('Loading needed modules. Please wait...')
 
 import sys
 
-sys.path.append(
-    r'C:\Users\andri\Desktop\Tesi\Midi_Classification_and_Generation\libraries\tegridy-tools\tegridy-tools')
+# sys.path.append(
+#     r'C:\Users\andri\Desktop\Tesi\Midi_Classification_and_Generation\libraries\tegridy-tools\tegridy-tools')
 
 import TMIDIX
 
 import numpy as np
 from sklearn import preprocessing
 
-from Midi_Processing.mini_muse_utils import *
-from Midi_Processing.labels_manager import *
+from mini_muse_utils import *
+from labels_manager import *
 
 
 def process_melody_chords(task, chords_path, ints_path, dataset_addr, csv_labelled, final_csv_path, chords_csv):
@@ -213,6 +213,9 @@ def read_db_csv_and_create_pickle(nes_csv, rock_csv, classic_csv):
     datasets_df['filename'] = nes_files + rock_files + classic_files
     datasets_df['int_tokens'] = train_data_x
     datasets_df['label'] = labels_list
+
+    if not os.path.exists("../dataset/db_merged"):
+        os.makedirs("../dataset/db_merged/")
 
     datasets_df.to_csv(r"../dataset/db_merged/db_merged.csv", sep=';', index=False)
 
