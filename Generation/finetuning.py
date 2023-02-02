@@ -11,7 +11,7 @@ if __name__ == "__main__":
 
     # Path parameters
     # To change based on the model you want to finetune on
-    full_path_to_model_checkpoint = r"C:\Users\andri\Desktop\Tesi\Midi_Classification_and_Generation\Generation\model\muse\Mini_Muse_Trained_Model_88000_steps_0.6129_loss.pth"  # Insert path to the model to finetune
+    full_path_to_model_checkpoint = ""  # Insert path to the model unzipped to finetune
     ints_dataset = '../dataset/rock/pickle/ints_rock_dataset.pickle'
     dataset_test_path = '../dataset/rock/rock_dataset_test'
     path_to_best_checkpoint = '../dataset/rock/best_accuracy.pth'
