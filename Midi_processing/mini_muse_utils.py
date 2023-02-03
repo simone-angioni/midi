@@ -364,7 +364,7 @@ def convert_vector_to_midi(token_song, ticks_per_quarter, track_title):
 
             detailed_stats = TMIDIX.Tegridy_SONG_to_MIDI_Converter(song_f,
                                                                    output_signature='converted',
-                                                                   output_file_name=r'..\converted_midi\converted_' + track_title,
+                                                                   output_file_name=r'converted_' + track_title,
                                                                    track_name=track_title,
                                                                    list_of_MIDI_patches=[0, 24, 32, 40, 42, 46, 56, 71, 73, 0, 53, 19, 0, 0, 0, 0],
                                                                    number_of_ticks_per_quarter=ticks_per_quarter)

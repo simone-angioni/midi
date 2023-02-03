@@ -3,7 +3,7 @@ from random import random
 import pandas as pd
 from tensorflow import keras
 
-from labels_manager import load_nes_label
+from Midi_processing.labels_manager import load_nes_label
 
 print('Loading needed modules. Please wait...')
 
@@ -17,8 +17,8 @@ import TMIDIX
 import numpy as np
 from sklearn import preprocessing
 
-from mini_muse_utils import *
-from labels_manager import *
+from Midi_processing.mini_muse_utils import *
+from Midi_processing.labels_manager import *
 
 
 def process_melody_chords(task, chords_path, ints_path, dataset_addr, csv_labelled, final_csv_path, chords_csv):
