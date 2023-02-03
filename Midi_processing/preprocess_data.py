@@ -7,16 +7,6 @@ from Midi_processing.labels_manager import load_nes_label
 
 print('Loading needed modules. Please wait...')
 
-import sys
-
-# sys.path.append(
-#     r'C:\Users\andri\Desktop\Tesi\Midi_Classification_and_Generation\libraries\tegridy-tools\tegridy-tools')
-
-import TMIDIX
-
-import numpy as np
-from sklearn import preprocessing
-
 from Midi_processing.mini_muse_utils import *
 from Midi_processing.labels_manager import *
 
@@ -59,13 +49,14 @@ def process_melody_chords(task, chords_path, ints_path, dataset_addr, csv_labell
             print(dataset_addr)
             # Creating the directory with tracks labelled on the genre
             path_nes_labelled = r'..\dataset\nes\nes_labelled'
+            path_nes_pruned = r'..\dataset\nes\nes_pruned'
             if not os.path.exists(path_nes_labelled):
                 os.makedirs(path_nes_labelled)
             dir = os.listdir(path_nes_labelled)
             # If the directory is empty the tracks aren't yet classified
             if len(dir) == 0:
                 print('Labeling the nes database')
-                label_nes_songs(r'..\dataset\nes\nes_db', chords_csv, csv_labelled, path_nes_labelled)
+                label_nes_songs(path_nes_pruned, chords_csv, csv_labelled, path_nes_labelled)
             else:
                 print("Directory with nes songs labelled already exists")
 

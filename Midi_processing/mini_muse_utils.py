@@ -180,7 +180,10 @@ def create_melody_chords_dataset_2(dataset_addr, pickle_path):
 
                 # Move files processed in specific folder for nes processing
                 if 'nes' in dataset_addr:
-                    os.replace(f, os.path.join(r'D:/midi_dataset/nes/full_db_pruned', fn))
+                    path_nes_pruned = r'..\dataset\nes\nes_pruned'
+                    if not os.path.exists(path_nes_pruned):
+                        os.makedirs(path_nes_pruned)
+                    os.replace(f, os.path.join(path_nes_pruned, fn))
             else:
                 print("skipped midi " + fn + "of length" + str(len(melody_chords)))
                 #os.remove(f)

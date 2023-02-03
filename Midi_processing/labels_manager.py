@@ -42,7 +42,7 @@ def label_nes_songs(dataset_addr, chords_csv, csv_labelled, labelled_db_addr):
         for file in filenames:
             l = assign_label(file, n_labels)
             # Some file will be left without label
-            # and here i move only the file with at least one label
+            # and here move only the file with at least one label
             # from original folder to nes_labelled folder
             if not all(v == 0 for v in l):
 
