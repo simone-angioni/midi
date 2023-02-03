@@ -171,6 +171,8 @@ if __name__ == "__main__":
 
         out2.extend(out[64:])
 
+    original_genre = prime_song['label'].values
+
     print("Similarity values min = ", str(number_of_prime_tokens * 2) + " max = 2050")
     dist, dist2 = calculate_similarity(out2, prime_song_tokens)
 
@@ -200,6 +202,7 @@ if __name__ == "__main__":
         "Similarity distance normal and normalized": str(dist2) + '----' + str(dist),
         "Similarity Percentage": similarity_percentage,
         # "Instruments used to generate": instrument_name,
+        "Original Genre of the priming song": str(original_genre),
         "Genres classified divided by chunks: ": str(genres),
         "Db Classified divided by chunks": str(classified_db),
         "Length of generated track in tokens": len(out2)
