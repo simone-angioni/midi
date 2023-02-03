@@ -11,7 +11,7 @@ if __name__ == "__main__":
 
     # Path parameters
     # To change based on the model you want to finetune on
-    full_path_to_model_checkpoint = ""  # Insert path to the model unzipped to finetune
+    full_path_to_model_checkpoint = ""  # Insert path to the model to finetune
     ints_dataset = '../dataset/rock/pickle/ints_rock_dataset.pickle'
     dataset_test_path = '../dataset/rock/rock_dataset_test'
     path_to_best_checkpoint = '../dataset/rock/best_accuracy.pth'

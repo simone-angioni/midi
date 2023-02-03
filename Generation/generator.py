@@ -7,8 +7,8 @@ import torch
 from numpy.random.mtrand import random
 from tqdm import tqdm
 
-sys.path.append(
-    r'C:\Users\andri\Desktop\Tesi\Midi_Classification_and_Generation\libraries\tegridy-tools\tegridy-tools')
+# sys.path.append(
+#     r'C:\Users\andri\Desktop\Tesi\Midi_Classification_and_Generation\libraries\tegridy-tools\tegridy-tools')
 
 base_dir = os.getcwd()
 
@@ -17,13 +17,13 @@ from GPT2RGAX import *
 
 from collections import OrderedDict
 
-from Midi_Processing.mini_muse_utils import convert_vector_to_midi
+from Midi_processing.mini_muse_utils import convert_vector_to_midi
 
 import copy
 
 import json
 
-from Midi_Processing.find_similarity import calculate_similarity
+from Midi_processing.find_similarity import calculate_similarity
 
 from Classification.classifier import classify_song
 
@@ -31,7 +31,7 @@ def find_song_by_index(index, db):
     # The index respect to the csv visualization is - 2
 
     if db == 'nes':
-        csv_path = '../dataset/nes/csv/nes_labelled2.csv'
+        csv_path = '../dataset/nes/csv/nes_chords2.csv'
         
     elif db == 'rock':
         csv_path = '../dataset/rock/csv/rock_labelled.csv'
@@ -68,17 +68,16 @@ def config_model():
 
 if __name__ == "__main__":
 
-    # Model checkpoint finetuned on NES DB
-    full_path_to_model_checkpoint = r'model/muse/finetuning/batch_size4/nes/gpt2_rpr_checkpoint_1_epoch_320000_steps_0' \
-                                   r'.3397_loss.pth'
+    # Model checkpoint fine-tuned on NES DB
+    full_path_to_model_checkpoint = r'models/NES_model.pth'
 
-    # Model checkpoint finetuned on Rock DB 
+    # Model checkpoint fine-tuned on Rock DB
     # full_path_to_model_checkpoint = \
-    #     r'model/muse/finetuning/batch_size4/rock/gpt2_rpr_checkpoint_1_epoch_72000_steps_0.8955_loss.pth'
+    #     r'models/muse/finetuning/batch_size4/rock/gpt2_rpr_checkpoint_1_epoch_72000_steps_0.8955_loss.pth'
 
-    # Model checkpoint finetuned on Classic DB
+    # Model checkpoint fine-tuned on Classic DB
     # full_path_to_model_checkpoint = \
-    #     r'model/muse/finetuning/batch_size4/classic/gpt2_rpr_checkpoint_1_epoch_88000_steps_0.1372_loss.pth'
+    #     r'models/muse/finetuning/batch_size4/classic/gpt2_rpr_checkpoint_1_epoch_88000_steps_0.1372_loss.pth'
 
     config = config_model()
 
@@ -181,7 +180,7 @@ if __name__ == "__main__":
 
         out2.extend(out[64:])
 
-    original_genre = prime_song['label'].values
+    # original_genre = prime_song['label'].values
 
     print("Similarity values min = ", str(number_of_prime_tokens * 2) + " max = 2050")
     dist, dist2 = calculate_similarity(out2, prime_song_tokens)
@@ -191,7 +190,7 @@ if __name__ == "__main__":
     similarity_percentage = ((dist2 - number_of_prime_tokens*2) * 100) / ((len(out2)*2) - (number_of_prime_tokens*2))
 
     # Save to disk the original vector and its int representation
-    TMIDIX.Tegridy_Any_Pickle_File_Writer(out2, r'..\converted_midi\int_representation')
+    TMIDIX.Tegridy_Any_Pickle_File_Writer(out2, 'int_representation')
 
     convert_vector_to_midi([out2], song_timing, 'final_composition')
 
@@ -209,7 +208,7 @@ if __name__ == "__main__":
         "Priming index": priming_index,
         "Temperature": temperature,
         "Number of continuation blocks": number_of_continuation_blocks,
-        "Original Genre of the priming song": str(original_genre),
+        # "Original Genre of the priming song": str(original_genre),
         "Similarity distance normal and normalized": str(dist2) + '----' + str(dist),
         "Similarity Percentage": similarity_percentage,
         # "Instruments used to generate": instrument_name,
@@ -219,5 +218,5 @@ if __name__ == "__main__":
     }
 
     # Write dictionary to text file
-    with open('../converted_midi/parameters.txt', 'w') as convert_file:
+    with open('parameters.txt', 'w') as convert_file:
         convert_file.write(json.dumps(d))
