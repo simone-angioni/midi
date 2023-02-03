@@ -4,11 +4,6 @@ from tensorflow.keras import layers
 import matplotlib.pyplot as plt
 import os
 import tensorflow as tf
-from tensorflow.keras.layers import Layer
-import tensorflow.keras.backend as K
-
-from token_and_position_embedding import TokenAndPositionEmbedding
-from transformer_block import TransformerBlock
 
 try:
     physical_devices = tf.config.experimental.list_physical_devices('GPU')
@@ -23,48 +18,20 @@ except:
 class LSTM:
 
     def __init__(self, input_shape, vocabulary_size):
-        #super().__init__()
+        # super().__init__()
         print("Input shape for LSTM Model: ", input_shape )
         print("Vocabulary size for LSTM Model: ", vocabulary_size)
         
         # Compiling the model
         opt = tf.keras.optimizers.Adam(learning_rate=0.0001)
-        #This dimension probably come from
-        #piano_roll : np.ndarray, shape=(128,times.shape[0])
-        #from pretty midi lib
         latent_dim = 128
 
-        #latent_dim = 50
+        # latent_dim = 50
         
         num_classes = 5
 
         # Creating and compiling the model
 
-        #input = layers.Input(shape=input_shape, name='input', dtype="int32")
-        
-        #The second parameter is the output dimension of the layer
-        #x = layers.Embedding(vocabulary_size + 1, latent_dim, name='embed',  mask_zero= True)(input)
-        
-        #x = layers.Embedding(vocabulary_size + 1,num_classes,name='embed')(input)
-
-        #x = layers.LSTM(latent_dim, return_sequences=True)(x)
-        #x = Flatten()(x)
-        #x = Dropout(0.5)(x)
-        #First argument is the number of classes in output
-        #output = layers.Dense(num_classes, activation='softmax', name='output')(x)
-
-        # input = layers.Input(shape=input_shape, name='input')
-        ## embedding_layer = TokenAndPositionEmbedding(maxlen, vocabulary_size, latent_dim)
-        ## x = embedding_layer(input)
-        ## transformer_block = TransformerBlock(latent_dim, num_heads=3, ff_dim=64)
-        ## x = transformer_block(x)
-        # x = layers.GlobalAveragePooling1D()(x)
-        # x = layers.Dropout(0.2)(x)
-        # x = layers.Dense(32, activation="relu")(x)
-        # x = layers.Dropout(0.2)(x)
-        # output = layers.Dense(num_classes, activation="softmax", name='output')(x)
-
-        #MIA PROVA
         input = layers.Input(shape=input_shape, name='input')
         x = layers.Embedding(vocabulary_size + 1, latent_dim, name='embed', mask_zero=True)(input)
         x = layers.Bidirectional(tf.keras.layers.LSTM(latent_dim))(x)

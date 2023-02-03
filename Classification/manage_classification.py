@@ -1,14 +1,10 @@
 import itertools
 import json
-import sys
 import warnings
 
 from matplotlib import pyplot as plt
 from sklearn import svm
 from sklearn.ensemble import RandomForestClassifier
-
-sys.path.append(
-    r'C:\Users\andri\Desktop\Tesi\Midi_Classification_and_Generation\libraries\tegridy-tools\tegridy-tools')
 
 import TMIDIX
 
@@ -18,10 +14,10 @@ import numpy as np
 
 from sklearn.model_selection import KFold, train_test_split, StratifiedKFold, GridSearchCV
 
-from Midi_Processing.labels_manager import count_labels
+from Midi_processing.labels_manager import count_labels
 from transformer_classifier import TransformerClassifier
 
-from sklearn.metrics import roc_auc_score, accuracy_score, classification_report, accuracy_score, make_scorer, confusion_matrix, multilabel_confusion_matrix
+from sklearn.metrics import roc_auc_score, classification_report, accuracy_score, make_scorer, confusion_matrix
 
 from visualize_metrics import display_report
 
@@ -251,10 +247,6 @@ def train_transformer_cross_validation2(train_data_x, train_data_y, target):
             config = {'epochs': 20, 'batch_size': 32, 'train_size': len(X_train), 'num_classes': len(target)}
             model = TransformerClassifier(feed_shape, vocabulary_size=vocab_size, config=config)
 
-            # plot_model(model.model,
-            #            to_file=r'C:\Users\andri\Desktop\Tesi\Midi_Classification_and_Generation\Classification\model_plot'
-            #                    r'.png',
-            #            show_shapes=True, show_layer_names=True)
             # Generate a print
             print('------------------------------------------------------------------------')
             print(f'Training for fold {fold_no} ...')
@@ -339,7 +331,6 @@ def train_transformer_cross_validation2(train_data_x, train_data_y, target):
 
     display_report(final_report, 'folds_average', len(target))
 
-
     # Create a dictionary with results values
     d = dict()
 
@@ -355,6 +346,7 @@ def train_transformer_cross_validation2(train_data_x, train_data_y, target):
         convert_file.write(json.dumps(d))
 
 
+# Train on full data without k-cross validation
 def train_full_model(train_data_x, train_data_y, target):
     config = {'epochs': 50, 'batch_size': 32, 'train_size': len(train_data_x)}
 
@@ -392,16 +384,16 @@ if __name__ == "__main__":
     # Remove the comment from the dataset you want to train on
 
     # Nes ints data with y label
-    pickle_path = r'../dataset/nes/pickle/nes_int_with_label2'
-    target = ['rpg', 'sport', 'fighting', 'shooting', 'puzzle']
+    # pickle_path = r'../dataset/nes/pickle/nes_int_with_label2'
+    # target = ['rpg', 'sport', 'fighting', 'shooting', 'puzzle']
 
     # Rock ints data with y label
     # pickle_path = r'../dataset/rock/pickle/ints_rock_dataset_labelled'
     # target = ['Clapton', 'Queen', 'Beatles', 'Rolling Stones']
 
     # Classic ints data with y label
-    # pickle_path = r'../dataset/classic/pickle/ints_classic_dataset_labelled'
-    # target = ['Albanez', 'Beethoven', 'Mozart']
+    pickle_path = r'../dataset/classic/pickle/ints_classic_dataset_labelled'
+    target = ['Albanez', 'Beethoven', 'Mozart']
 
     # Intra db data with y label
     # pickle_path = r'../dataset/db_merged/ints_db_merged_labelled'
@@ -416,9 +408,6 @@ if __name__ == "__main__":
     #     idx_non_zero = [i for i, e in enumerate(arr) if e != 0]
     #     if len(idx_non_zero) > 1:
     #         arr[idx_non_zero[0]] = 0
-
-    # Split data into shorter list
-    # train_data_x, train_data_y = reduce_data_length(train_data_x, train_data_y)
 
     # Associate each chunk of one song with multiple same labels
     train_data_x, train_data_y = associate_labels_with_chunks(train_data_x, train_data_y)

@@ -1,17 +1,10 @@
-# Load the model and classify the song
-# from tensorflow import keras
 import numpy as np
 import tensorflow as tf
-from Midi_Processing.preprocess_data import convert_vector_to_midi
-
-import sys
-
-sys.path.append(
-    r'C:\Users\andri\Desktop\Tesi\Midi_Classification_and_Generation\libraries\tegridy-tools\tegridy-tools')
+from Midi_processing.preprocess_data import convert_vector_to_midi
 
 import TMIDIX
 
-from Midi_Processing.mini_muse_utils import split_int_array_in_512chunks
+from Midi_processing.mini_muse_utils import split_int_array_in_512chunks
 
 NES_CATEGORIES = ["RPG", "Sport", "Fighting", "Shooting", "Puzzle"]
 ROCK_CATEGORIES = ['Clapton', 'Queen', 'Beatles', 'Rolling Stones']
@@ -31,17 +24,17 @@ def load_model(path):
 def classify_song(vector_song, db_type):
 
     if db_type == 1:
-        model_path = r'..\Classification\models\runs_on_datset\nes\train_data2\transformer\folds\FullData'
+        model_path = r'..\Classification\models\NES_transformer_model\FullData'
         classes = NES_CATEGORIES
     if db_type == 2:
-        model_path = r'..\Classification\models\runs_on_datset\rock\transformer\folds\FullData'
+        model_path = r'..\Classification\models\Rock_transformer_model\FullData'
         classes = ROCK_CATEGORIES
     if db_type == 3:
-        model_path = r'..\Classification\models\runs_on_datset\classic\transformer\folds\FullData'
+        model_path = r'..\Classification\models\Classic_transformer_model\FullData'
         classes = CLASSIC_CATEGORIES
 
     model_intradb = load_model(model_path)
-    model_interdb = load_model(r'..\Classification\models\runs_on_datset\inter_db\transformer\folds\FullData')
+    model_interdb = load_model(r'..\Classification\models\InterDb_transformer_model\FullData')
 
     vector_song = np.array(vector_song)
 
@@ -62,10 +55,10 @@ def classify_song(vector_song, db_type):
 
 if __name__ == "__main__":
 
-    int_song_path = r'..\converted_midi\song_generated\muse\droput ' \
-                    r'0.3\nes\finetuning\batch_size4\gpt2_rpr_checkpoint_1_epoch_320000_steps_0.3397_loss.pth\3 vote ' \
-                    r'6 of 10\int_representation '
+    # Try the classifier inserting path to int song representation that you want to classify
+    int_song_path = r''
 
     int_song = TMIDIX.Tegridy_Any_Pickle_File_Reader(int_song_path)
 
+    # Number 1 nes db - Number 2 Rock db - Number 3 Classic db
     classify_song(int_song, 1)
