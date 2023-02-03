@@ -1,14 +1,7 @@
 import itertools
 import os
-import sys
 
 import pandas as pd
-import torch
-from numpy.random.mtrand import random
-from tqdm import tqdm
-
-# sys.path.append(
-#     r'C:\Users\andri\Desktop\Tesi\Midi_Classification_and_Generation\libraries\tegridy-tools\tegridy-tools')
 
 base_dir = os.getcwd()
 
@@ -72,12 +65,10 @@ if __name__ == "__main__":
     full_path_to_model_checkpoint = r'models/NES_model.pth'
 
     # Model checkpoint fine-tuned on Rock DB
-    # full_path_to_model_checkpoint = \
-    #     r'models/muse/finetuning/batch_size4/rock/gpt2_rpr_checkpoint_1_epoch_72000_steps_0.8955_loss.pth'
+    # full_path_to_model_checkpoint = r'models/Rock_model.pth'
 
     # Model checkpoint fine-tuned on Classic DB
-    # full_path_to_model_checkpoint = \
-    #     r'models/muse/finetuning/batch_size4/classic/gpt2_rpr_checkpoint_1_epoch_88000_steps_0.1372_loss.pth'
+    # full_path_to_model_checkpoint = r'models/Classic_model.pth'
 
     config = config_model()
 
@@ -180,8 +171,6 @@ if __name__ == "__main__":
 
         out2.extend(out[64:])
 
-    # original_genre = prime_song['label'].values
-
     print("Similarity values min = ", str(number_of_prime_tokens * 2) + " max = 2050")
     dist, dist2 = calculate_similarity(out2, prime_song_tokens)
 
@@ -208,7 +197,6 @@ if __name__ == "__main__":
         "Priming index": priming_index,
         "Temperature": temperature,
         "Number of continuation blocks": number_of_continuation_blocks,
-        # "Original Genre of the priming song": str(original_genre),
         "Similarity distance normal and normalized": str(dist2) + '----' + str(dist),
         "Similarity Percentage": similarity_percentage,
         # "Instruments used to generate": instrument_name,

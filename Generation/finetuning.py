@@ -2,8 +2,6 @@ import TMIDIX
 
 from GPT2RGAX import *
 
-from torchsummary import summary
-from sklearn import metrics
 import matplotlib.pyplot as plt
 import pickle
 
