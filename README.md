@@ -1,11 +1,11 @@
 # Midi Classification and Generation 
 
 ## Project Structure
-The project is divided in three main parts: Midi_processing (or utilities), Classification and Generation. 
-The dataset folder contains the three different MIDI databases in zip file employed in the project. 
+The project is divided in three main parts: Midi_processing (or utilities), Classification and Generation.   
+The dataset folder has the three different MIDI databases containing the MIDI files employed in the project in zip file. 
 
 ### Midi Processing or Utilities
-This section contains all the utilies useful for Midi processing. The main is the "manage_processing.py" file, from here the databases are unzipped and then processed to transform the MIDI files to other format that will be used for the Classification and Generation. This process creates pickle files from the MIDI songs: one pickle including labels for the classification task, and one pickle without labels for the Generation task. Moreover csv file are created with all the representation obtained during the process for the three different MIDI databases.
+This section contains all the utilies useful for Midi processing. The main is the "manage_processing.py" file, from here the databases are unzipped and then processed to transform the MIDI files to the 'Melody Chords" and "Integer" format that will be used for the Classification and Generation. This process creates pickle files from the MIDI songs with their representation: one pickle including labels for the classification task, and one pickle without labels for the Generation task. Moreover csv file are created with all the representation obtained during the process for the three different MIDI databases.  
 
 ### Generation 
 This section is composed of two different file, one for finetuning and one for genearation. The finetuning file use as starting point an already trained model downlodable from https://github.com/asigalov61/Mini-Muse/tree/main/Model and present in the database folder. You can finetune the model on the different databases already processed and transformed. The generation file take the finetuned model and use that to generate original continuation of little MIDI extract from the databases.
