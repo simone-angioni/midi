@@ -58,23 +58,20 @@ def process_melody_chords(task, chords_path, ints_path, dataset_addr, csv_labell
         if 'nes' in dataset_addr:
             print(dataset_addr)
             # Creating the directory with tracks labelled on the genre
-            #path_nes_labelled = r'../dataset/nes/midi/nes_labelled'
-            path_nes_labelled = r'D:/midi_dataset/nes/nes_labelled'
+            path_nes_labelled = r'..\dataset\nes\nes_labelled'
+            if not os.path.exists(path_nes_labelled):
+                os.makedirs(path_nes_labelled)
             dir = os.listdir(path_nes_labelled)
             # If the directory is empty the tracks aren't yet classified
             if len(dir) == 0:
                 print('Labeling the nes database')
-                #label_nes_songs(dataset_addr, chords_csv, csv_labelled)
-                label_nes_songs(r'D:/midi_dataset/nes/full_db_pruned', chords_csv, csv_labelled)
+                label_nes_songs(r'..\dataset\nes\nes_db', chords_csv, csv_labelled, path_nes_labelled)
             else:
                 print("Directory with nes songs labelled already exists")
 
             # Add int tokens to the csv from the melody chords
             melody_chords_f = TMIDIX.Tegridy_Any_Pickle_File_Reader(chords_path)
-            #csv = r'../dataset/nes/csv/nes_full_db.csv'
-            #create_int_db_from_melody_chords(melody_chords_f, chords_csv, chords_csv)
             train_data_x, train_data_y = load_nes_label(csv_labelled)
-            #train_list_x, train_list_y = build_list_of_max_n_tokens(melody_chords_f, train_data_y)
             pickle_int_path = r'../dataset/nes/pickle/nes_int_with_label2'
             TMIDIX.Tegridy_Any_Pickle_File_Writer((train_data_x, train_data_y), pickle_int_path)
 

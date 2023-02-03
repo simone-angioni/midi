@@ -28,7 +28,7 @@ classic_artist = ['albanez', 'beethoven', 'mozart']
 n_labels = 5
 
 
-def label_nes_songs(dataset_addr, chords_csv, csv_labelled):
+def label_nes_songs(dataset_addr, chords_csv, csv_labelled, labelled_db_addr):
     # This directory has only the tracks already filtered by the muse preprocessing
     # that need to be labelled
     # in the end of the process the labelled tracks will be moved to other directory
@@ -45,15 +45,12 @@ def label_nes_songs(dataset_addr, chords_csv, csv_labelled):
             # and here i move only the file with at least one label
             # from original folder to nes_labelled folder
             if not all(v == 0 for v in l):
-                # os.replace(os.path.join(dirpath, file),
-                #            os.path.join(r'../dataset/nes/midi/nes_labelled', file))
+
                 src_path = os.path.join(dirpath, file)
-                dst_path = os.path.join(r'D:/midi_dataset/nes/nes_labelled', file)
+                dst_path = os.path.join(labelled_db_addr, file)
                 shutil.copy(src_path, dst_path)
                 # labels.append((file, l))
             labels.append((file, l))
-
-    # dataset_training = r'../dataset/nes/midi/nes_labelled'
 
     # Add labels to the csv already created
     df = pd.read_csv(chords_csv, sep=';')
@@ -70,7 +67,6 @@ def label_nes_songs(dataset_addr, chords_csv, csv_labelled):
     count_labels(labels_values)
 
     df['label'] = labels_values
-    # df['filename'] = filename
 
     df.to_csv(csv_labelled, sep=';', index=False)
 
@@ -127,14 +123,6 @@ def count_labels(labels):
 
 # From the database in csv format return array with one hot encoded label ordered as in the csv file
 def load_nes_label(csv_labelled):
-    # prendo le label dal csv dove le ho annotate
-    # train_data_csv = pd.read_csv(
-    #    r"C:\Users\andri\Desktop\Tesi\Midi_Classification_and_Generation\nes_labelled.csv", sep=";")
-
-    # train_data_csv = pd.read_csv(r"../Classification/nes_labelled.csv",
-    #                             sep=";", converters={'label': eval})
-
-    # train_data_y = train_data_csv['label'].tolist()
 
     df = pd.read_csv(csv_labelled, sep=';',
                      converters={'label': eval, 'int_tokens': eval})
@@ -147,14 +135,6 @@ def load_nes_label(csv_labelled):
     train_data_x = df['int_tokens'].tolist()
 
     count_labels(train_data_y)
-
-    # df.to_csv(r'../dataset/nes/csv/nes_labelled_songs.csv', sep=';', index=False)
-
-    # Remove label where all elements are 0
-    # they referred to unlabelled songs
-    # for x in train_data_y:
-    #     if not any(v == 1 for v in x):
-    #         train_data_y.remove(x)
 
     return train_data_x, train_data_y
 
