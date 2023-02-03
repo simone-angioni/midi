@@ -1,0 +1,12 @@
+ipython==8.9.0
+joblib==1.1.0
+keras==2.9.0
+matplotlib==3.5.2
+mido==1.2.10
+numpy==1.23.1
+pandas==1.4.3
+scikit_learn==1.2.1
+seq_alignment==1.0.0
+tensorflow==2.9.1
+torch==1.12.1+cu116
+tqdm==4.64.0
