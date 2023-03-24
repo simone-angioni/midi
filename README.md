@@ -16,7 +16,9 @@ The classification part face a multi-class classification problem, classifyng ch
 ## Run Instructions
 
 ### Prerequisites 
+
 Python verson 3.10 (downlodable from https://www.python.org/downloads/release/python-3100/)
+
 CUDA drivers version 11.6 (downloadable from https://developer.nvidia.com/cuda-11-6-0-download-archive)
 
 1 - Create virtual enviroment -> python -m venv midi_enviroment
@@ -25,7 +27,8 @@ CUDA drivers version 11.6 (downloadable from https://developer.nvidia.com/cuda-1
 
 3 - Install library requirements from requirements.txt -> pip install -r requirements.txt
 
-4 - Install required depencies from terminal -> torch==1.12.1+cu116 -f https://download.pytorch.org/whl/cu116/torch_stable.html
+4 - Install required depencies from terminal -> 
+torch==1.12.1+cu116 -f https://download.pytorch.org/whl/cu116/torch_stable.html
 
 ### Classification 
 
