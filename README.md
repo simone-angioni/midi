@@ -36,5 +36,5 @@ torch==1.12.1+cu116 -f https://download.pytorch.org/whl/cu116/torch_stable.html
 
 2 - Inside the manage_classification.py file you have to decomment the lines of code related to the database you want to train the model on (from default is set to the classic db)
 
-3 - 
+3 - Run the manage_classification.py file and the training will start outputting in the classification folder the metrics results and in the models folder the trained model
 
