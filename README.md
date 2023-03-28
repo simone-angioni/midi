@@ -30,11 +30,20 @@ CUDA drivers version 11.6 (downloadable from https://developer.nvidia.com/cuda-1
 pip install -r requirements.txt
 ```
 
+### MIDI processing
+
+Follow this steps to process the three database (Classic, NES, and Rock) and obtain the representation needed to procede in the next sections.
+
+1 - Inside the project directories, go to the *Midi_processing* folder and run the *manage_processing.py* file, this processing will create the necessary files and will store the integer representations and csv file inside the dataset folder. 
+
+Note that if you want to try only a dataset you can comment the lines of code related to the other databases. 
+
+
 ### Classification 
 
 1 - Set *manage_classification.py* come main file to run with the correct interpreter from the virtualenv
 
-2 - Inside the *manage_classification.py* file you have to decomment the lines of code related to the database you want to train the model on (from default is set to the classic db)
+2 - Inside the *manage_classification.py* file, in the main, you have to decomment the lines of code related to the database you want to train the model on (from default is set to the classic db)
 
 3 - Run the *manage_classification.py* file and the training will start outputting in the classification folder the metrics results and in the models folder the trained model
 
