@@ -1,17 +1,21 @@
 # Midi Classification and Generation 
 
 ## Project Structure
+
 The project is divided in three main parts: Midi_processing (or utilities), Classification and Generation.   
 The dataset folder has the three different MIDI databases containing the MIDI files employed in the project in zip file. 
 
 ### Midi Processing or Utilities
+
 This section contains all the utilies useful for Midi processing. The main is the "manage_processing.py" file, from here the databases are unzipped and then processed to transform the MIDI files to the 'Melody Chords" and "Integer" format that will be used for the Classification and Generation. This process creates pickle files from the MIDI songs with their representation: one pickle including labels for the classification task, and one pickle without labels for the Generation task. Moreover csv file are created with all the representation obtained during the process for the three different MIDI databases.  
 
 ### Generation 
+
 This section is composed of two different file, one for finetuning and one for the actual genearation. 
 The finetuning file use as starting point an already trained model downlodable from https://github.com/asigalov61/Mini-Muse/tree/main/Model and present in the database folder. You can finetune the model on the different databases already processed and transformed. The generation file take the finetuned model and use that to generate original continuation of little MIDI extract from the databases.
 
 ### Classification
+
 The classification part face a multi-class classification problem, classifyng chunks of MIDI songs already processed based on the label they have. For instance, in the NES dataset we have five classes based on the genre of videogames of which the song is part. The genres are Role-Playing Games, Sport, Fighting, Shooting and Puzzle. To do so we train three classical machine learning baseline methods such as K-Neighbour, Random Forest and Support Vector Machine and a model based on the new Transformer technology in order to compare the results obtained from the different models. 
 
 ## Run Instructions
@@ -31,6 +35,7 @@ CUDA drivers version 11.6 (downloadable from https://developer.nvidia.com/cuda-1
 pip install -r requirements.txt
 ```
 
+
 ### MIDI processing
 
 Follow this steps to process the three database (Classic, NES, and Rock) and obtain the representation needed to procede in the next sections.
@@ -40,6 +45,7 @@ Follow this steps to process the three database (Classic, NES, and Rock) and obt
 Note that if you want to try only a dataset you can comment the lines of code related to the other databases in the *manage_processing.py* file. 
 
 
+
 ### Classification 
 
 1 - Set *manage_classification.py* come main file to run with the correct interpreter from the virtualenv
@@ -47,6 +53,8 @@ Note that if you want to try only a dataset you can comment the lines of code re
 2 - Inside the *manage_classification.py* file, in the main, you have to decomment the lines of code related to the database you want to train the model on (from default is set to the classic db)
 
 3 - Run the *manage_classification.py* file and the training will start outputting in the classification folder the metrics results and in the models folder the trained model
+
+
 
 ### Generation 
 
@@ -60,6 +68,7 @@ The Generation is composed of two sections:
 - The finetuning section list the steps to reproduce the fine-tuning of the pre-trained model to create the model fine tuned on the database you want to choose (Classic, NES, or Rock)
 
 - The actual generation section list the steps to use the fine tuned model from the previous section to generate the original song through the continuation of a song excerpts 
+
 
 #### Finetuning 
 
@@ -92,6 +101,7 @@ cat Mini-Muse-Trained-Model.zip.0* > model.zip
 4 - Run the *finetuning.py* and fine tune the model
 
 Note that the model was finetuned on a TESLA P6 GPU with 16 GB, if you run this section with a lower GPU is possible the the code give you an *out of memory* error. You can still try to get it running by lowering the values in the model configuration in the *finetuning.py* file. 
+
 
 
 #### Actual generation 
