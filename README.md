@@ -21,14 +21,19 @@ Python verson 3.10 (downlodable from https://www.python.org/downloads/release/py
 
 CUDA drivers version 11.6 (downloadable from https://developer.nvidia.com/cuda-11-6-0-download-archive)
 
-1 - Create virtual enviroment -> python -m venv midi_enviroment
+1 - Create virtual enviroment 'midi_enviroment' following tutorial on https://docs.python.org/3/library/venv.html
 
 2 - Activate the virtual enviroment
 
-3 - Install library requirements from requirements.txt -> pip install -r requirements.txt
+3 - Install library requirements from terminal 
+```console
+pip install -r requirements.txt
+```
 
-4 - Install required depencies from terminal -> 
+4 - Install required depencies from terminal
+```console
 torch==1.12.1+cu116 -f https://download.pytorch.org/whl/cu116/torch_stable.html
+```
 
 ### Classification 
 
@@ -37,4 +42,6 @@ torch==1.12.1+cu116 -f https://download.pytorch.org/whl/cu116/torch_stable.html
 2 - Inside the manage_classification.py file you have to decomment the lines of code related to the database you want to train the model on (from default is set to the classic db)
 
 3 - Run the manage_classification.py file and the training will start outputting in the classification folder the metrics results and in the models folder the trained model
+
+### Generation 
 
