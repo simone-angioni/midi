@@ -32,11 +32,11 @@ pip install -r requirements.txt
 
 ### Classification 
 
-1 - Set manage_classification.py come main file to run with the correct interpreter from the virtualenv
+1 - Set *manage_classification.py* come main file to run with the correct interpreter from the virtualenv
 
-2 - Inside the manage_classification.py file you have to decomment the lines of code related to the database you want to train the model on (from default is set to the classic db)
+2 - Inside the *manage_classification.py* file you have to decomment the lines of code related to the database you want to train the model on (from default is set to the classic db)
 
-3 - Run the manage_classification.py file and the training will start outputting in the classification folder the metrics results and in the models folder the trained model
+3 - Run the *manage_classification.py* file and the training will start outputting in the classification folder the metrics results and in the models folder the trained model
 
 ### Generation 
 
@@ -67,8 +67,8 @@ On Linux
 cat Mini-Muse-Trained-Model.zip.0* > model.zip
 ```
 
-- Extract the model with extension 'pth' from the zip file
+- Extract the model with extension *pth* from the zip file
 
-2 - Insert the path of the extracted model in the finetuning.py file inside the Generation folder in the project in the variable 'full_path_to_model_checkpoint'
+2 - In project directories go inside the Generation folder, open the *finetuning.py* file and set the variable *full_path_to_model_checkpoint* to the model path
 
 
