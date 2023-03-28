@@ -36,7 +36,7 @@ Follow this steps to process the three database (Classic, NES, and Rock) and obt
 
 1 - Inside the project directories, go to the *Midi_processing* folder and run the *manage_processing.py* file, this processing will create the necessary files and will store the integer representations and csv file inside the dataset folder. 
 
-Note that if you want to try only a dataset you can comment the lines of code related to the other databases. 
+Note that if you want to try only a dataset you can comment the lines of code related to the other databases in the *manage_processing.py* file. 
 
 
 ### Classification 
@@ -78,6 +78,16 @@ cat Mini-Muse-Trained-Model.zip.0* > model.zip
 
 - Extract the model with extension *pth* from the zip file
 
-2 - In project directories go inside the Generation folder, open the *finetuning.py* file and set the variable *full_path_to_model_checkpoint* to the model path
+2 - In project directories go inside the Generation folder and open the *finetuning.py* 
+
+3 - Set the variable value at the beginiing of the file according to the model you want to finetune on:
+
+- set *full_path_to_model_checkpoint* to the model path from the previous step
+- set *ints_dataset* to the integer representation of the datbase you want to finetune on, this representation is created in the MIDI processing section inside the dataset folder (default set to rock dataset integer representation)
+- set *dataset_test_path*, *path_to_best_checkpoint*, *loss_fig_path* (default set to rock dataset)
+
+4 - Run the *finetuning.py* and fine tune the model
+
+Note that the model was finetuned on a TESLA P6 GPU with 16 GB, if you run this section with a lower GPU is possible the the code give you an *out of memory* error. You can still try to get it running by lowering the values in the model configuration in the *finetuning.py* file. 
 
 
