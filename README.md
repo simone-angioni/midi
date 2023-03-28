@@ -30,11 +30,6 @@ CUDA drivers version 11.6 (downloadable from https://developer.nvidia.com/cuda-1
 pip install -r requirements.txt
 ```
 
-4 - Install required depencies from terminal
-```console
-torch==1.12.1+cu116 -f https://download.pytorch.org/whl/cu116/torch_stable.html
-```
-
 ### Classification 
 
 1 - Set manage_classification.py come main file to run with the correct interpreter from the virtualenv
@@ -44,4 +39,36 @@ torch==1.12.1+cu116 -f https://download.pytorch.org/whl/cu116/torch_stable.html
 3 - Run the manage_classification.py file and the training will start outputting in the classification folder the metrics results and in the models folder the trained model
 
 ### Generation 
+
+Install required depencies from terminal
+```console
+torch==1.12.1+cu116 -f https://download.pytorch.org/whl/cu116/torch_stable.html
+```
+
+The Generation is composed of two sections: 
+- The finetuning section list the steps to reproduce the fine-tuning of the pre-trained model to create the model fine tuned on the database you want to choose (Classic, NES, or Rock)
+- The actual generation section list the steps to use the fine tuned model from the previous section to generate the original song through the continuation of a song excerpts 
+
+#### Finetuning 
+
+1 - Follow this steps to download the pre trained model: 
+
+- Go to the page https://github.com/asigalov61/Mini-Muse/tree/main/Model 
+- Download each one of the zip file inside the same folder
+- Concatenate the splitted zip files into one with the following commands
+
+On windows 
+```console
+copy /B Mini-Muse-Trained-Model.zip.0* model.zip
+```
+
+On Linux 
+```console
+cat Mini-Muse-Trained-Model.zip.0* > model.zip
+```
+
+- Extract the model with extension 'pth' from the zip file
+
+2 - Insert the path of the extracted model in the finetuning.py file inside the Generation folder in the project in the variable 'full_path_to_model_checkpoint'
+
 
