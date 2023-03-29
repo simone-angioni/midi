@@ -105,7 +105,7 @@ cat Mini-Muse-Trained-Model.zip.0* > model.zip
 
 4 - Run the *finetuning.py* and fine tune the model
 
-Note that the model was finetuned on a TESLA P6 GPU with 16 GB, if you run this section with a lower GPU is possible the the code give you an *out of memory* error. You can still try to get it running by lowering the values in the model configuration in the *finetuning.py* file. 
+Note that the model was finetuned on a TESLA P6 GPU with 16 GB, if you run this section with a lower GPU is possible that the code give you an *out of memory* error. You can still try to get it running by lowering the values in the model configuration in the *finetuning.py* file. 
 
 
 
