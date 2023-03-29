@@ -2,7 +2,10 @@
 
 ## Project Structure
 
-The project is divided in three main parts: Midi_processing (or utilities), Classification and Generation.   
+The project is divided in three main parts: 
+- Midi_processing (or utilities) 
+- Classification 
+- Generation.   
 The dataset folder has the three different MIDI databases containing the MIDI files employed in the project in zip file. 
 
 ### Midi Processing or Utilities
