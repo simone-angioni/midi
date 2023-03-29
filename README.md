@@ -72,7 +72,7 @@ The Generation is composed of two sections:
 
 - The finetuning section list the steps to reproduce the fine-tuning of the pre-trained model to create the model fine tuned on the database you want to choose (Classic, NES, or Rock)
 
-- The actual generation section list the steps to use the fine tuned model from the previous section to generate the original song through the continuation of a song excerpts 
+- The actual generation section list the steps to use the fine tuned model from the previous section to generate the original song through the continuation of a song excerpts (You can execute only this section since in the project you have the already pre trained model on each dataset) 
 
 
 #### Finetuning 
