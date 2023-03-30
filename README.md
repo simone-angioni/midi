@@ -30,24 +30,26 @@ The classification part face a multi-class classification problem, classifyng ch
 
 1 - Python verson 3.10 (downlodable from https://www.python.org/downloads/release/python-3100/)
 
-2- Be sure to have a GPU with CUDA drivers version 11.6 (downloadable from https://developer.nvidia.com/cuda-11-6-0-download-archive)
+2 - Be sure to have a GPU with CUDA drivers version 11.6 (downloadable from https://developer.nvidia.com/cuda-11-6-0-download-archive)
 
-3 - Create virtual enviroment 'midi_enviroment' following tutorial on https://docs.python.org/3/library/venv.html
+3 - Download the project
 
-4 - Activate the virtual enviroment
+4 - Create virtual enviroment 'midi_enviroment' following tutorial on https://docs.python.org/3/library/venv.html
 
-5 - Check *pip* version to be equal to 23.0.1, to avoid errors, with terminal command
+5 - Activate the virtual enviroment
+
+6 - Check *pip* version to be equal to 23.0.1, to avoid errors, with terminal command
 ```console
 pip --version
 ```
 If you have another version we suggest you to change it to 23.0.1
 
-6 - Install library requirements from terminal 
+7 - Install library requirements from terminal 
 ```console
 pip install -r requirements.txt
 ```
 
-7 - Pre process the database following MIDI processing sections
+8 - Pre process the database following MIDI processing sections
 
 
 ### MIDI processing
