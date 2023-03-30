@@ -47,6 +47,8 @@ If you have another version we suggest you to change it to 23.0.1
 pip install -r requirements.txt
 ```
 
+5 - Pre process the database following MIDI processing sections
+
 
 ### MIDI processing
 
