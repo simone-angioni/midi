@@ -118,9 +118,9 @@ Note that the model was finetuned on a TESLA P6 GPU with 16 GB, if you run this 
 
 
 
-#### Actual generation 
+#### MIDI generation 
 
-This section is about the actual generation of the song from the fine tuned model. You can execute this phase without running any of the previous section by unzipping the already fine tuned models inside the *Model* folder in the *Generation* folder or you can use models fine tuned by you following the finetuning section instructions. 
+This section is about the actual generation of the song from the fine tuned model. You can execute this phase by unzipping the already fine tuned models inside the *Model* folder in the *Generation* folder or you can use models fine tuned by you following the finetuning section instructions. 
 
 1 - Unzip the model from \Generation\models\NES or Rock or Classic
 
