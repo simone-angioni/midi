@@ -188,7 +188,7 @@ if __name__ == "__main__":
     # Classify song with our trained model
     del model
     torch.cuda.empty_cache()
-    genres, classified_db = classify_song(out2, 1)
+    #genres, classified_db = classify_song(out2, 1)
 
     # Create a dictionary with parameters value and similarity scores
     d = dict()
@@ -203,8 +203,8 @@ if __name__ == "__main__":
         "Similarity Percentage": similarity_percentage,
         # "Instruments used to generate": instrument_name,
         "Original Genre of the priming song": str(original_genre),
-        "Genres classified divided by chunks: ": str(genres),
-        "Db Classified divided by chunks": str(classified_db),
+        #"Genres classified divided by chunks: ": str(genres),
+        #"Db Classified divided by chunks": str(classified_db),
         "Length of generated track in tokens": len(out2)
     }
 
