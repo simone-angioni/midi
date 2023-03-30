@@ -1,9 +1,9 @@
-from random import random
+import sys
 
-import pandas as pd
-from tensorflow import keras
-
-from Midi_processing.labels_manager import load_nes_label
+from pathlib import Path
+path = Path(sys.path[0])
+print("sys path:  " + str(path.parent.absolute()))
+sys.path.append(str(path.parent.absolute()))
 
 print('Loading needed modules. Please wait...')
 
