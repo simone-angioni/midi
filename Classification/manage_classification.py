@@ -1,3 +1,11 @@
+# Adding path to sys to activate import
+import sys
+
+from pathlib import Path
+path = Path(sys.path[0])
+print("sys path:  " + str(path.parent.absolute()))
+sys.path.append(str(path.parent.absolute()))
+
 import itertools
 import json
 import warnings
