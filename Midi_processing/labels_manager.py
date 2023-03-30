@@ -6,17 +6,22 @@ import os.path
 
 import shutil
 
-base_dir = os.getcwd()
+import sys
 
-with open(os.path.join(base_dir, "../Classification/lists/rpg.json"), "r") as fp:
+from pathlib import Path
+path = Path(sys.path[0])
+path_s = str(path.parent.absolute())
+print("sys path lables manager: " + path_s)
+
+with open(os.path.join(path_s, "Classification/lists/rpg.json"), "r") as fp:
     rpg = json.load(fp)
-with open(os.path.join(base_dir, "../Classification/lists/fighting.json"), "r") as fp:
+with open(os.path.join(path_s, "Classification/lists/fighting.json"), "r") as fp:
     fighting = json.load(fp)
-with open(os.path.join(base_dir, "../Classification/lists/puzzle.json"), "r") as fp:
+with open(os.path.join(path_s, "Classification/lists/puzzle.json"), "r") as fp:
     puzzle = json.load(fp)
-with open(os.path.join(base_dir, "../Classification/lists/sport.json"), "r") as fp:
+with open(os.path.join(path_s, "Classification/lists/sport.json"), "r") as fp:
     sport = json.load(fp)
-with open(os.path.join(base_dir, "../Classification/lists/shooting.json"), "r") as fp:
+with open(os.path.join(path_s, "Classification/lists/shooting.json"), "r") as fp:
     shooting = json.load(fp)
 
 label_lists = puzzle + fighting + puzzle + sport + shooting
