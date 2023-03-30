@@ -66,7 +66,7 @@ Note that if you want to try only a dataset you can comment the lines of code re
 
 Install required depencies from terminal
 ```console
-torch==1.12.1+cu116 -f https://download.pytorch.org/whl/cu116/torch_stable.html
+pip install torch==1.12.1+cu116 -f https://download.pytorch.org/whl/cu116/torch_stable.html
 ```
 
 The Generation is composed of two sections: 
