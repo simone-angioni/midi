@@ -67,13 +67,13 @@ def config_model():
 if __name__ == "__main__":
 
     # Model checkpoint fine-tuned on NES DB
-    full_path_to_model_checkpoint = path_s + r'/Classification/models/NES_model.pth'
+    full_path_to_model_checkpoint = path_s + r'/Generation/models/NES_model.pth'
 
     # Model checkpoint fine-tuned on Rock DB
-    # full_path_to_model_checkpoint = path_s + r'/Classification/models/Rock_model.pth'
+    # full_path_to_model_checkpoint = path_s + r'/Generation/models/Rock_model.pth'
 
     # Model checkpoint fine-tuned on Classic DB
-    # full_path_to_model_checkpoint = path_s + r'/Classification/models/Classic_model.pth'
+    # full_path_to_model_checkpoint = path_s + r'/Generation/models/Classic_model.pth'
 
     config = config_model()
 
