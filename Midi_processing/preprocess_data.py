@@ -48,8 +48,8 @@ def process_melody_chords(task, chords_path, ints_path, dataset_addr, csv_labell
         if 'nes' in dataset_addr:
             print(dataset_addr)
             # Creating the directory with tracks labelled on the genre
-            path_nes_labelled = r'..\dataset\nes\nes_labelled'
-            path_nes_pruned = r'..\dataset\nes\nes_pruned'
+            path_nes_labelled = path_s + r'\dataset\nes\nes_labelled'
+            path_nes_pruned = path_s + r'\dataset\nes\nes_pruned'
             if not os.path.exists(path_nes_labelled):
                 os.makedirs(path_nes_labelled)
             dir = os.listdir(path_nes_labelled)
@@ -63,7 +63,7 @@ def process_melody_chords(task, chords_path, ints_path, dataset_addr, csv_labell
             # Add int tokens to the csv from the melody chords
             melody_chords_f = TMIDIX.Tegridy_Any_Pickle_File_Reader(chords_path)
             train_data_x, train_data_y = load_nes_label(csv_labelled)
-            pickle_int_path = r'../dataset/nes/pickle/nes_int_with_label2'
+            pickle_int_path = path_s + r'/dataset/nes/pickle/nes_int_with_label2'
             TMIDIX.Tegridy_Any_Pickle_File_Writer((train_data_x, train_data_y), pickle_int_path)
 
         # Label process for rock, classic and intra dataset
@@ -150,7 +150,7 @@ def convert_vector_to_midi(vector_songs, ticks_per_quarter):
 
         detailed_stats = TMIDIX.Tegridy_SONG_to_MIDI_Converter(song_f,
                                                                output_signature='Yoda',
-                                                               output_file_name=r'..\converted_midi\converted_midi' + str(
+                                                               output_file_name=path_s + r'\converted_midi\converted_midi' + str(
                                                                    idx),
                                                                track_name='converted midi' + str(idx),
                                                                list_of_MIDI_patches=[0, 24, 32, 40, 42, 46, 56, 71, 73,
@@ -202,12 +202,13 @@ def read_db_csv_and_create_pickle(nes_csv, rock_csv, classic_csv):
     datasets_df['int_tokens'] = train_data_x
     datasets_df['label'] = labels_list
 
-    if not os.path.exists("../dataset/db_merged"):
-        os.makedirs("../dataset/db_merged/")
+    if not os.path.exists(path_s + "/dataset/db_merged"):
+        os.makedirs(path_s + "/dataset/db_merged/")
 
-    datasets_df.to_csv(r"../dataset/db_merged/db_merged.csv", sep=';', index=False)
+    datasets_df.to_csv(path_s + r"/dataset/db_merged/db_merged.csv", sep=';', index=False)
 
-    TMIDIX.Tegridy_Any_Pickle_File_Writer((train_data_x, labels_list), r'../dataset/db_merged/ints_db_merged_labelled')
+    TMIDIX.Tegridy_Any_Pickle_File_Writer((train_data_x, labels_list), path_s + r'/dataset/db_merged'
+                                                                                r'/ints_db_merged_labelled')
 
     return
 
