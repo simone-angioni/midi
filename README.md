@@ -40,6 +40,7 @@ CUDA drivers version 11.6 (downloadable from https://developer.nvidia.com/cuda-1
 ```console
 pip install -r requirements.txt
 ```
+4 - Install *pip version 23.0.1*
 
 
 ### MIDI processing
