@@ -57,6 +57,10 @@ Follow this steps to process the three database (Classic, NES, and Rock) and obt
 1 - Inside the project directories, go to the *Midi_processing* folder and run the *manage_processing.py* file, this processing will create the necessary files and will store the integer representations and csv file inside the dataset folder. 
 
 Note that if you want to try only a dataset you can comment the lines of code related to the other databases in the *manage_processing.py* file. 
+You can run the preprocessing script using terminal command
+```console
+python manage_processing.py
+```
 
 
 
