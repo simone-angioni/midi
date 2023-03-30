@@ -41,35 +41,35 @@ if __name__ == "__main__":
 
     # Call processing for rock db
     process_melody_chords(task='classification',
-                          chords_path=path_s + r'../dataset/rock/pickle/rock_chords',
-                          chords_csv=path_s + r'../dataset/rock/csv/rock_chords.csv',
-                          dataset_addr=path_s + r'../dataset/rock/midi',
-                          ints_path=path_s + r'../dataset/rock/pickle/ints_rock_dataset',
-                          csv_labelled=path_s + r'../dataset/rock/csv/rock_labelled.csv',
-                          final_csv_path=path_s + r'../dataset/rock/csv/rock_final.csv')
+                          chords_path=path_s + r'/dataset/rock/pickle/rock_chords',
+                          chords_csv=path_s + r'/dataset/rock/csv/rock_chords.csv',
+                          dataset_addr=path_s + r'/dataset/rock/midi',
+                          ints_path=path_s + r'/dataset/rock/pickle/ints_rock_dataset',
+                          csv_labelled=path_s + r'/dataset/rock/csv/rock_labelled.csv',
+                          final_csv_path=path_s + r'/dataset/rock/csv/rock_final.csv')
     
     # # # Call processing melody chords for classic db
     process_melody_chords(task='classification',
-                          chords_path=path_s + r'../dataset/classic/pickle/classic_chords',
-                          chords_csv=path_s + r'../dataset/classic/csv/classic_melody_chords.csv',
-                          dataset_addr=path_s + r'../dataset/classic/midi',
-                          ints_path=path_s + r'../dataset/classic/pickle/ints_classic_dataset',
-                          csv_labelled=path_s + r'../dataset/classic/csv/classic_labelled.csv',
-                          final_csv_path=path_s + r'../dataset/classic/csv/classic_final.csv')
+                          chords_path=path_s + r'/dataset/classic/pickle/classic_chords',
+                          chords_csv=path_s + r'/dataset/classic/csv/classic_melody_chords.csv',
+                          dataset_addr=path_s + r'/dataset/classic/midi',
+                          ints_path=path_s + r'/dataset/classic/pickle/ints_classic_dataset',
+                          csv_labelled=path_s + r'/dataset/classic/csv/classic_labelled.csv',
+                          final_csv_path=path_s + r'/dataset/classic/csv/classic_final.csv')
 
     # Call processing for generation nesdb
     process_melody_chords(task='classification',
-                          chords_path=path_s + r'../dataset/nes/pickle/nes_chords2',
-                          chords_csv=path_s + r'../dataset/nes/csv/nes_chords2.csv',
-                          dataset_addr=path_s + r'../dataset/nes/nes_db',
-                          ints_path=path_s + r'../dataset/nes/pickle/ints_nes2',
-                          csv_labelled=path_s + r'../dataset/nes/csv/nes_labelled2.csv',
-                          final_csv_path=path_s + r'../dataset/nes/csv/nes_final_csv2.csv')
+                          chords_path=path_s + r'/dataset/nes/pickle/nes_chords2',
+                          chords_csv=path_s + r'/dataset/nes/csv/nes_chords2.csv',
+                          dataset_addr=path_s + r'/dataset/nes/nes_db',
+                          ints_path=path_s + r'/dataset/nes/pickle/ints_nes2',
+                          csv_labelled=path_s + r'/dataset/nes/csv/nes_labelled2.csv',
+                          final_csv_path=path_s + r'/dataset/nes/csv/nes_final_csv2.csv')
 
     # Preprocessing for classification between dataset another logic from previous part the final goal is create a
     # pickle file with all ints representation of db songs with relative db label having same number of files for
     # each db read the csv already created with the ints representation and use the csv as label
-    read_db_csv_and_create_pickle(path_s + r'../dataset/nes/csv/nes_chords2.csv', path_s +
-    r'../dataset/rock/csv/rock_labelled.csv', path_s + r'../dataset/classic/csv/classic_labelled.csv')
+    read_db_csv_and_create_pickle(path_s + r'/dataset/nes/csv/nes_chords2.csv', path_s +
+    r'/dataset/rock/csv/rock_labelled.csv', path_s + r'/dataset/classic/csv/classic_labelled.csv')
 
     print("Processing is finished")
