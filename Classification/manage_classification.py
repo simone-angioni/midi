@@ -401,7 +401,7 @@ if __name__ == "__main__":
     # target = ['Clapton', 'Queen', 'Beatles', 'Rolling Stones']
 
     # Classic ints data with y label
-    pickle_path = r'../dataset/classic/pickle/ints_classic_dataset_labelled'
+    pickle_path = path_s + r'/dataset/classic/pickle/ints_classic_dataset_labelled'
     target = ['Albanez', 'Beethoven', 'Mozart']
 
     # Intra db data with y label
