@@ -17,7 +17,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 import TMIDIX
 
-from GPT2RGAX import *
+#from GPT2RGAX import *
 
 import numpy as np
 
@@ -393,19 +393,19 @@ if __name__ == "__main__":
     # Remove the comment from the dataset you want to train on
 
     # Nes ints data with y label
-    # pickle_path = r'../dataset/nes/pickle/nes_int_with_label2'
-    # target = ['rpg', 'sport', 'fighting', 'shooting', 'puzzle']
+    pickle_path = path_s + r'/dataset/nes/pickle/nes_int_with_label2'
+    target = ['rpg', 'sport', 'fighting', 'shooting', 'puzzle']
 
     # Rock ints data with y label
-    # pickle_path = r'../dataset/rock/pickle/ints_rock_dataset_labelled'
+    # pickle_path = path_s + r'/dataset/rock/pickle/ints_rock_dataset_labelled'
     # target = ['Clapton', 'Queen', 'Beatles', 'Rolling Stones']
 
     # Classic ints data with y label
-    pickle_path = path_s + r'/dataset/classic/pickle/ints_classic_dataset_labelled'
-    target = ['Albanez', 'Beethoven', 'Mozart']
+    # pickle_path = path_s + r'/dataset/classic/pickle/ints_classic_dataset_labelled'
+    # target = ['Albanez', 'Beethoven', 'Mozart']
 
     # Intra db data with y label
-    # pickle_path = r'../dataset/db_merged/ints_db_merged_labelled'
+    # pickle_path = path_s + r'/dataset/db_merged/ints_db_merged_labelled'
     # target = ['Nes', 'Rock', 'Classic']
 
     # Read the dataset
@@ -413,10 +413,10 @@ if __name__ == "__main__":
 
     # Remove this comments if you want to train on nes dataset
     # If nes transform the y from multi label [1,0,0,0,1] to multi class so each array has only a 1
-    # for arr in train_data_y:
-    #     idx_non_zero = [i for i, e in enumerate(arr) if e != 0]
-    #     if len(idx_non_zero) > 1:
-    #         arr[idx_non_zero[0]] = 0
+    for arr in train_data_y:
+        idx_non_zero = [i for i, e in enumerate(arr) if e != 0]
+        if len(idx_non_zero) > 1:
+            arr[idx_non_zero[0]] = 0
 
     # Associate each chunk of one song with multiple same labels
     train_data_x, train_data_y = associate_labels_with_chunks(train_data_x, train_data_y)
