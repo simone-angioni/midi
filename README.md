@@ -151,7 +151,9 @@ This section is about the actual generation of the song from the fine tuned mode
 python .\Generation\generator.py
 ``` 
 
-3 - The script will output the generated song along with the original song and the excerpt all converted. Moreover it will create a *parameters.txt* file with the following information about the generated song:
+3 - The script will output four files in the same folder of the *generator.py*:
+- 
+along with the original song and the excerpt all converted. Moreover it will create a *parameters.txt* file with the following information about the generated song:
 
 - *Priming Song* : title of the song used as priming
 - *Number of prime tokens* : number of prime tokens value
