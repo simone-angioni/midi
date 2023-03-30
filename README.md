@@ -32,47 +32,49 @@ The classification part face a multi-class classification problem, classifyng ch
 
 2 - Be sure to have a GPU with CUDA drivers version 11.6 (downloadable from https://developer.nvidia.com/cuda-11-6-0-download-archive)
 
-3 - Download the project choosing root directory midi_main
+3 - Create virtual enviroment 'midi_enviroment' following tutorial on https://docs.python.org/3/library/venv.html
 
-4 - Create virtual enviroment 'midi_enviroment' following tutorial on https://docs.python.org/3/library/venv.html
+4 - Activate the virtual enviroment
 
-5 - Activate the virtual enviroment
-
-6 - Check *pip* version to be equal to 23.0.1, to avoid errors, with terminal command
+5 - Check *pip* version to be equal to 23.0.1, to avoid errors, with terminal command
 ```console
 pip --version
 ```
 If you have another version we suggest you to change it to 23.0.1
 
-7 - Install library requirements from terminal 
+6 - Install library requirements from terminal 
 ```console
 pip install -r requirements.txt
 ```
 
-8 - Pre process the database following MIDI processing sections
+7 - Pre process the database following MIDI processing sections
 
 
 ### MIDI processing
 
 Follow this steps to process the three database (Classic, NES, and Rock) and obtain the representation needed to procede in the next sections.
 
-1 - Inside the project directories, go to the *Midi_processing* folder and run the *manage_processing.py* file, this processing will create the necessary files and will store the integer representations and csv file inside the dataset folder. 
+1 - From terminal, go to the main project directory *midi_main* and run the command:
+```console
+python .\Midi_processing\manage_processing.py
+```
+This processing will create the necessary files and will store the integer representations and csv file inside the dataset folder. 
 
 Note that if you want to try only a dataset you can comment the lines of code related to the other databases in the *manage_processing.py* file. 
 You can run the preprocessing script using terminal command
-```console
-python manage_processing.py
-```
+
 
 
 
 ### Classification 
 
-1 - Set *manage_classification.py* come main file to run with the correct interpreter from the virtualenv
+1 - Inside the *manage_classification.py* file, in the main, you can decomment the lines of code related to the database you want to train the model on (from default is set to the classic db)
 
-2 - Inside the *manage_classification.py* file, in the main, you have to decomment the lines of code related to the database you want to train the model on (from default is set to the classic db)
-
-3 - Run the *manage_classification.py* file and the training will start outputting in the classification folder the metrics results and in the models folder the trained model
+2 - From terminal, go to the main project directory *midi_main* and run the command:
+```console
+python .\Classification\manage_classification.py
+``` 
+The training will start outputting in the classification folder the metrics results and in the models folder the trained model
 
 
 
@@ -87,7 +89,7 @@ The Generation is composed of two sections:
 
 - The finetuning section list the steps to reproduce the fine-tuning of the pre-trained model to create the model fine tuned on the database you want to choose (Classic, NES, or Rock)
 
-- The actual generation section list the steps to use the fine tuned model from the previous section to generate the original song through the continuation of a song excerpts (You can execute only this section since in the project you have the already pre trained model on each dataset) 
+- The MIDI generation section list the steps to use the fine tuned model from the previous section to generate the original song through the continuation of a song excerpts (You can execute only this section since in the project you have the already pre trained model on each dataset) 
 
 
 #### Finetuning 
@@ -144,7 +146,12 @@ This section is about the actual generation of the song from the fine tuned mode
 
 - *priming_index* : index in the csv, created in the *Midi processing* section, of the song to use as priming for the generation (default set to 65)
 
-3 - Once the parameters are set, run the *generator.py* file, it will output the generated song along with the original song and the excerpt all converted. Moreover it will create a *parameters.txt* file with the following information about the generated song:
+3 - From terminal, go to the main project directory *midi_main* and run the command:
+```console
+python .\Generation\generator.py
+``` 
+
+3 - The script will output the generated song along with the original song and the excerpt all converted. Moreover it will create a *parameters.txt* file with the following information about the generated song:
 
 - *Priming Song* : title of the song used as priming
 - *Number of prime tokens* : number of prime tokens value
