@@ -32,7 +32,7 @@ The classification part face a multi-class classification problem, classifyng ch
 
 2 - Be sure to have a GPU with CUDA drivers version 11.6 (downloadable from https://developer.nvidia.com/cuda-11-6-0-download-archive)
 
-3 - Download the project
+3 - Download the project choosing root directory midi_main
 
 4 - Create virtual enviroment 'midi_enviroment' following tutorial on https://docs.python.org/3/library/venv.html
 
