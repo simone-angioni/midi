@@ -1,9 +1,14 @@
+import sys
+
+from pathlib import Path
+path = Path(sys.path[0])
+path_s = str(path.parent.absolute())
+print("sys path:  " + path_s)
+sys.path.append(path_s)
+
 import itertools
-import os
 
 import pandas as pd
-
-base_dir = os.getcwd()
 
 import TMIDIX
 from GPT2RGAX import *
@@ -24,13 +29,13 @@ def find_song_by_index(index, db):
     # The index respect to the csv visualization is - 2
 
     if db == 'nes':
-        csv_path = '../dataset/nes/csv/nes_chords2.csv'
+        csv_path = path_s + '/dataset/nes/csv/nes_chords2.csv'
         
     elif db == 'rock':
-        csv_path = '../dataset/rock/csv/rock_labelled.csv'
+        csv_path = path_s + '/dataset/rock/csv/rock_labelled.csv'
 
     if db == 'classic':
-        csv_path = '../dataset/classic/csv/classic_labelled.csv'
+        csv_path = path_s + '/dataset/classic/csv/classic_labelled.csv'
 
     df = pd.read_csv(csv_path, sep=';', converters={'int_tokens': eval})
 
@@ -62,13 +67,13 @@ def config_model():
 if __name__ == "__main__":
 
     # Model checkpoint fine-tuned on NES DB
-    full_path_to_model_checkpoint = r'models/NES_model.pth'
+    full_path_to_model_checkpoint = path_s + r'/Classification/models/NES_model.pth'
 
     # Model checkpoint fine-tuned on Rock DB
-    # full_path_to_model_checkpoint = r'models/Rock_model.pth'
+    # full_path_to_model_checkpoint = path_s + r'/Classification/models/Rock_model.pth'
 
     # Model checkpoint fine-tuned on Classic DB
-    # full_path_to_model_checkpoint = r'models/Classic_model.pth'
+    # full_path_to_model_checkpoint = path_s + r'/Classification/models/Classic_model.pth'
 
     config = config_model()
 
