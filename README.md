@@ -120,7 +120,9 @@ Note that the model was finetuned on a TESLA P6 GPU with 16 GB, if you run this 
 
 This section is about the actual generation of the song from the fine tuned model. You can execute this phase without running any of the previous section by unzipping the already fine tuned models inside the *Model* folder in the *Generation* folder or you can use models fine tuned by you following the finetuning section instructions. 
 
-1 - Set the parameters values in the *generation.py* file:
+1 - Unzip the model from \Generation\models\NES or Rock or Classic
+
+2 - Set the parameters values in the *generator.py* file:
 
 - *full_path_to_model_checkpoint* : path to the fine tuned model (default set to the NES dataset)
 
@@ -134,7 +136,7 @@ This section is about the actual generation of the song from the fine tuned mode
 
 - *priming_index* : index in the csv, created in the *Midi processing* section, of the song to use as priming for the generation (default set to 65)
 
-2 - Once the parameters are set, run the *generation.py* file, it will output the generated song along with the original song and the excerpt all converted. Moreover it will create a *parameters.txt* file with the following information about the generated song:
+3 - Once the parameters are set, run the *generator.py* file, it will output the generated song along with the original song and the excerpt all converted. Moreover it will create a *parameters.txt* file with the following information about the generated song:
 
 - *Priming Song* : title of the song used as priming
 - *Number of prime tokens* : number of prime tokens value
