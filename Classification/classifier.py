@@ -1,3 +1,11 @@
+import sys
+
+from pathlib import Path
+path = Path(sys.path[0])
+path_s = str(path.parent.absolute())
+print("sys path:  " + path_s)
+sys.path.append(path_s)
+
 import numpy as np
 import tensorflow as tf
 from Midi_processing.preprocess_data import convert_vector_to_midi
@@ -24,17 +32,17 @@ def load_model(path):
 def classify_song(vector_song, db_type):
 
     if db_type == 1:
-        model_path = r'..\Classification\models\NES_transformer_model\FullData'
+        model_path = path_s + r'\Classification\models\NES_transformer_model\FullData'
         classes = NES_CATEGORIES
     if db_type == 2:
-        model_path = r'..\Classification\models\Rock_transformer_model\FullData'
+        model_path = path_s + r'\Classification\models\Rock_transformer_model\FullData'
         classes = ROCK_CATEGORIES
     if db_type == 3:
-        model_path = r'..\Classification\models\Classic_transformer_model\FullData'
+        model_path = path_s + r'\Classification\models\Classic_transformer_model\FullData'
         classes = CLASSIC_CATEGORIES
 
     model_intradb = load_model(model_path)
-    model_interdb = load_model(r'..\Classification\models\InterDb_transformer_model\FullData')
+    model_interdb = load_model(path_s + r'\Classification\models\InterDb_transformer_model\FullData')
 
     vector_song = np.array(vector_song)
 
@@ -62,3 +70,4 @@ if __name__ == "__main__":
 
     # Number 1 nes db - Number 2 Rock db - Number 3 Classic db
     classify_song(int_song, 1)
+
