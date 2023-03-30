@@ -3,8 +3,9 @@ import sys
 
 from pathlib import Path
 path = Path(sys.path[0])
-print("sys path:  " + str(path.parent.absolute()))
-sys.path.append(str(path.parent.absolute()))
+path_s = str(path.parent.absolute())
+print("sys path:  " + path_s)
+sys.path.append(path_s)
 
 import itertools
 import json
