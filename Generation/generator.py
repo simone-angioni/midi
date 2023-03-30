@@ -29,7 +29,7 @@ def find_song_by_index(index, db):
     # The index respect to the csv visualization is - 2
 
     if db == 'nes':
-        csv_path = path_s + '/dataset/nes/csv/nes_chords2.csv'
+        csv_path = path_s + '/dataset/nes/csv/nes_labelled2.csv'
         
     elif db == 'rock':
         csv_path = path_s + '/dataset/rock/csv/rock_labelled.csv'
