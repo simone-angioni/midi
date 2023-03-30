@@ -1,4 +1,11 @@
-# from random import random
+import sys
+
+from pathlib import Path
+path = Path(sys.path[0])
+path_s = str(path.parent.absolute())
+print("sys path:  " + path_s)
+sys.path.append(path_s)
+
 from random import shuffle
 
 import os
@@ -10,9 +17,6 @@ from tqdm import tqdm
 import sys
 
 import pandas as pd
-
-# sys.path.append(
-#     r'C:\Users\andri\Desktop\Tesi\Midi_Classification_and_Generation\libraries\tegridy-tools\tegridy-tools')
 
 import TMIDIX
 
@@ -180,7 +184,7 @@ def create_melody_chords_dataset_2(dataset_addr, pickle_path):
 
                 # Move files processed in specific folder for nes processing
                 if 'nes' in dataset_addr:
-                    path_nes_pruned = r'..\dataset\nes\nes_pruned'
+                    path_nes_pruned = path_s + r'\dataset\nes\nes_pruned'
                     if not os.path.exists(path_nes_pruned):
                         os.makedirs(path_nes_pruned)
                     os.replace(f, os.path.join(path_nes_pruned, fn))
