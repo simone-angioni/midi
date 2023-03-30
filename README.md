@@ -36,11 +36,16 @@ CUDA drivers version 11.6 (downloadable from https://developer.nvidia.com/cuda-1
 
 2 - Activate the virtual enviroment
 
-3 - Install library requirements from terminal 
+3 - Check *pip* version to be equal to 23.0.1, to avoid errors, with terminal command
+```console
+pip --version
+```
+If you have another version we suggest you to change it to 23.0.1
+
+4 - Install library requirements from terminal 
 ```console
 pip install -r requirements.txt
 ```
-4 - Install *pip version 23.0.1*
 
 
 ### MIDI processing
