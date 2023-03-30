@@ -1,3 +1,12 @@
+import sys
+
+from pathlib import Path
+path = Path(sys.path[0])
+path_s = str(path.parent.absolute())
+print("sys path:  " + path_s)
+sys.path.append(path_s)
+# NOTE path_s = absolute path to main directory of the project
+
 import TMIDIX
 
 from GPT2RGAX import *
@@ -9,11 +18,12 @@ if __name__ == "__main__":
 
     # Path parameters
     # To change based on the model you want to finetune on
-    full_path_to_model_checkpoint = ""  # Insert path to the model to finetune
-    ints_dataset = '../dataset/rock/pickle/ints_rock_dataset.pickle'
-    dataset_test_path = '../dataset/rock/rock_dataset_test'
-    path_to_best_checkpoint = '../dataset/rock/best_accuracy.pth'
-    loss_fig_path = '../dataset/rock/best_loss_image.png'
+    # Insert path to the model to finetune 
+    full_path_to_model_checkpoint = ""  # Put Absolute path
+    ints_dataset = path_s + '/dataset/rock/pickle/ints_rock_dataset.pickle'
+    dataset_test_path = path_s + '/dataset/rock/rock_dataset_test'
+    path_to_best_checkpoint = path_s + '/dataset/rock/best_accuracy.pth'
+    loss_fig_path = path_s + '/dataset/rock/best_loss_image.png'
 
     DIC_SIZE = 512
     max_seq = 1024
